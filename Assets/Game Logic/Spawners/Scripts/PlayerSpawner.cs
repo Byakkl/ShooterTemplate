@@ -2,17 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerSpawn : MonoBehaviour
+public class PlayerSpawn : Spawner
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
     // Update is called once per frame
-    void Update()
+    public override void Update()
     {
-        
+        //Run the base update
+        base.Update();
+
+        //Custom player things, such as resetting ammo counts, etc
     }
 }

@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2598104258530925831}
-  - component: {fileID: -5384236269717361535}
+  - component: {fileID: 4442902990066228058}
   m_Layer: 0
   m_Name: ItemSpawner
   m_TagString: Untagged
@@ -32,7 +32,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &-5384236269717361535
+--- !u!114 &4442902990066228058
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -41,6 +41,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 7545676899007473346}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 93ada1bde1185de4aaa3331c3b9d575d, type: 3}
+  m_Script: {fileID: 11500000, guid: dad7c588e5ab7df42b31ae294e454634, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
