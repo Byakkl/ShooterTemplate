@@ -217,11 +217,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
---- !u!4 &1058688295 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5193882547655751853, guid: 0b7f8c8337fa6e7498e85ecfca5ba136, type: 3}
-  m_PrefabInstance: {fileID: 8216439633523775527}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &216129626150463229
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -274,10 +269,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8904504234245998679, guid: ce75d4a6252d5c8479f2ee4f1bdb517b, type: 3}
-      propertyPath: spawnPoint
-      value: 
-      objectReference: {fileID: 1058688295}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -363,6 +354,10 @@ PrefabInstance:
       propertyPath: shouldRespawn
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4442902990066228058, guid: d5fea9fef7d36e34bb6f071b86b9c7b0, type: 3}
+      propertyPath: gameController
+      value: 
+      objectReference: {fileID: 11400000, guid: 4a15fe6b34d6f084984fe22de85a6d27, type: 2}
     - target: {fileID: 7545676899007473346, guid: d5fea9fef7d36e34bb6f071b86b9c7b0, type: 3}
       propertyPath: m_Name
       value: ItemSpawner
@@ -453,6 +448,10 @@ PrefabInstance:
       propertyPath: shouldRespawn
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -8524184146255268702, guid: 0b7f8c8337fa6e7498e85ecfca5ba136, type: 3}
+      propertyPath: gameController
+      value: 
+      objectReference: {fileID: 11400000, guid: 4a15fe6b34d6f084984fe22de85a6d27, type: 2}
     - target: {fileID: 5193882547655751853, guid: 0b7f8c8337fa6e7498e85ecfca5ba136, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
