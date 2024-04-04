@@ -14,7 +14,7 @@ public class PlayerSpawner : Spawner
         PlayerController controller = instance.GetComponent<PlayerController>();
 
         //Give the player their starting item
-        Gun gun = new Gun(6, 6, 5.0f);
+        Gun gun = new Gun(6, 6, 0.2f);
         gameController.AddItem(gun);
 
         controller.SetCurrentItem(gun);

@@ -173,4 +173,14 @@ public class PlayerController : MonoBehaviour
     public void AddAmmoReserve(int ammo){
         ammoReserves += ammo;
     }
+
+    private void OnTriggerEnter(Collider collider){
+        //Attempt to fetch a component that implements IPickUp from the object that was collided with
+        IPickUp pickup = collider.gameObject.GetComponent<IPickUp>();
+        //The collision was not with a pickup
+        if(pickup == null)
+            return;
+
+        pickup.PickUp(this);
+    }
 }
