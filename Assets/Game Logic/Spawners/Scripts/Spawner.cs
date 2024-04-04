@@ -66,7 +66,9 @@ public class Spawner : MonoBehaviour
         respawnTimeRemaining = respawnTime;
 
         IItem itemInstance = instance.GetComponent<IItem>();
-        if(itemInstance != null)
+        if(itemInstance != null){
+            itemInstance.isItemActive = true;
             gameController.AddItem(itemInstance);
+        }
     }
 }

@@ -72,10 +72,16 @@ public class AmmoPickUp : MonoBehaviour, IItem, IPickUp
 
     public void PickUp(PlayerController player)
     {
-        throw new System.NotImplementedException();
+        //Add the ammo value to the player's reserves
+        player.AddAmmoReserve(ammoValue);
+
+        isItemActive = false;
     }
 
     #region Item Implementation
+    private bool _isItemActive;
+    public bool isItemActive {get => _isItemActive; set => _isItemActive = value;}
+
     public void UsePrimary()
     {
         //No primary use
@@ -92,6 +98,12 @@ public class AmmoPickUp : MonoBehaviour, IItem, IPickUp
     {
         //Play the visual movement for the pickup
         PlayAnimation();
+    }
+
+    public void Cleanup(){
+        //Once this item is inactive we want to destroy it
+        //If we were using item pools we'd just return it to the inactive pool instead
+        Destroy(gameObject);
     }
     #endregion
 }

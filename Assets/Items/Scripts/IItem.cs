@@ -4,9 +4,14 @@ using UnityEngine;
 
 public interface IItem
 {
-    public abstract void UsePrimary();
+    //Tracks if this item is active or should be cleaned up by the GameController
+    public bool isItemActive {get; set;}
 
-    public abstract void UseSecondary();
+    public void UsePrimary();
 
-    public abstract void ItemUpdate();
+    public void UseSecondary();
+
+    public void ItemUpdate();
+
+    public void Cleanup();
 }

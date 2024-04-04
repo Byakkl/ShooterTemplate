@@ -20,6 +20,8 @@ public class Gun : IItem
         maxAmmo = a_maxAmmo;
         fireDelay = a_fireDelay;
         fireDelayTimer = 0;
+
+        isItemActive = true;
     }
 
     /// <summary>
@@ -77,6 +79,9 @@ public class Gun : IItem
     }
 
     #region Item Implementation
+    private bool _isItemActive;
+    public bool isItemActive {get => _isItemActive; set => _isItemActive = value;}
+
     public void UsePrimary()
     {
         //*click*
@@ -103,6 +108,12 @@ public class Gun : IItem
     {
         if(fireDelayTimer > 0)
             fireDelayTimer -= Time.deltaTime;
+    }
+
+    public void Cleanup(){
+        //No custom cleanup needed
+        //Could do something like return currentAmmo to player reserves instead though that would be better implemented from a "discard item" on the player side
+        return;
     }
     #endregion
 }
