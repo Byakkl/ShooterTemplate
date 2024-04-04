@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1816047317325404796}
-  - component: {fileID: -7970250695349342362}
+  - component: {fileID: 892600202828180238}
   m_Layer: 0
   m_Name: Ammo
   m_TagString: Untagged
@@ -33,7 +33,7 @@ Transform:
   - {fileID: 8815868486739556049}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &-7970250695349342362
+--- !u!114 &892600202828180238
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

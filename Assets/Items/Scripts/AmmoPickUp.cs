@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AmmoPickUp : MonoBehaviour, IPickUp
+public class AmmoPickUp : MonoBehaviour, Item, IPickUp
 {
     #region Animation Variables
     //Reference to visual group's transform
@@ -36,13 +36,6 @@ public class AmmoPickUp : MonoBehaviour, IPickUp
 
         //Determine a random amount of ammo this pickup is worth
         ammoValue = Random.Range(ammoMinimum, ammoMaximum);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        //Play the visual movement for the pickup
-        PlayAnimation();
     }
 
     /// <summary>
@@ -81,4 +74,24 @@ public class AmmoPickUp : MonoBehaviour, IPickUp
     {
         throw new System.NotImplementedException();
     }
+
+    #region Item Implementation
+    public void UsePrimary()
+    {
+        //No primary use
+        return;
+    }
+
+    public void UseSecondary()
+    {
+        //No secondary use
+        return;
+    }
+
+    public void ItemUpdate()
+    {
+        //Play the visual movement for the pickup
+        PlayAnimation();
+    }
+    #endregion
 }
