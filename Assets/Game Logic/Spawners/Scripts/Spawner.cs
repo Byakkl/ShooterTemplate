@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
+    [SerializeField]
+    protected SO_GameController gameController;
+    
     //The prefab of the object to be spawned
     [SerializeField]
     GameObject prefab;
@@ -24,7 +27,7 @@ public class Spawner : MonoBehaviour
     float respawnTimeRemaining;
 
     //Stores the spawned object instance for tracking when it has been destroyed
-    GameObject instance;
+    protected GameObject instance;
 
     public virtual void Start(){
         //Initialize the respawn timer
@@ -61,5 +64,9 @@ public class Spawner : MonoBehaviour
         
         //Reset the respawn timer
         respawnTimeRemaining = respawnTime;
+
+        IItem itemInstance = instance.GetComponent<IItem>();
+        if(itemInstance != null)
+            gameController.AddItem(itemInstance);
     }
 }

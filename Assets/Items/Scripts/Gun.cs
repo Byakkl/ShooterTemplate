@@ -1,7 +1,7 @@
 
 using UnityEngine;
 
-public class Gun : Item
+public class Gun : IItem
 {
     //Current ammo in the gun
     int currentAmmo;

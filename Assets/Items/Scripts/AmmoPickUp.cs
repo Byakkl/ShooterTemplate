@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AmmoPickUp : MonoBehaviour, Item, IPickUp
+public class AmmoPickUp : MonoBehaviour, IItem, IPickUp
 {
     #region Animation Variables
     //Reference to visual group's transform
