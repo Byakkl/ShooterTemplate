@@ -1,8 +1,12 @@
 using TMPro;
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody))]
 public class PlayerController : MonoBehaviour
 {
+    //Stores a reference to the rigidbody component
+    Rigidbody playerRB;
+
     //Stores a reference to the point to spawn projectiles from
     [SerializeField]
     Transform projectileSpawn;
@@ -42,13 +46,14 @@ public class PlayerController : MonoBehaviour
         ammoReserves = 0;
     }
 
+    void Start(){
+        playerRB = gameObject.GetComponent<Rigidbody>();
+    }
+
     void Update()
     {
         //Recieve user input updates
         GetPlayerInput();
-
-        //Move the player
-        ApplyMovementInput();
 
         //Move the camera
         ApplyCameraInput();
@@ -63,12 +68,17 @@ public class PlayerController : MonoBehaviour
         UpdateUI();
     }
 
+    void FixedUpdate(){
+        //Move the player
+        ApplyMovementInput();
+    }
+
     /// <summary>
     /// Retrieves updates from Input system
     /// </summary>
     void GetPlayerInput(){
         //Get WASD input
-        inputs.movement = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+        inputs.movement = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
 
         //Get Mouse input
         inputs.camera = new Vector3(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"), 0);
@@ -91,10 +101,10 @@ public class PlayerController : MonoBehaviour
         //Add relative right/left movement
         frameMovement += transform.right * inputs.movement.x;
         //Normalize the results to ensure diagonal movement isn't faster, multiply by player move speed and adjust for delta time
-        frameMovement = frameMovement.normalized * moveSpeed * Time.deltaTime;
+        frameMovement = frameMovement.normalized * moveSpeed * Time.fixedDeltaTime;
 
-        //Apply the resulting movement to the transform's position
-        transform.position += frameMovement;
+        //Apply the resulting movement to the player's rigidbody velocity
+        playerRB.velocity = frameMovement;
     }
 
     /// <summary>
