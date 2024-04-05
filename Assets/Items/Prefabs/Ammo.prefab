@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 892600202828180238}
   - component: {fileID: 3491393585949598184}
   - component: {fileID: 2397335649294102103}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Ammo
-  m_TagString: Untagged
+  m_TagString: Pickup
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -114,7 +114,7 @@ GameObject:
   - component: {fileID: 2184468704636865516}
   - component: {fileID: 453266410626286322}
   - component: {fileID: 4135000455360351274}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cylinder (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -221,7 +221,7 @@ GameObject:
   - component: {fileID: 4865732104181651737}
   - component: {fileID: 5632946078586132153}
   - component: {fileID: 5950307942949738518}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cylinder (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -325,7 +325,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8815868486739556049}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Visuals
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -362,7 +362,7 @@ GameObject:
   - component: {fileID: 2972997851421740292}
   - component: {fileID: 1448591268279376756}
   - component: {fileID: 6544529064402056945}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}

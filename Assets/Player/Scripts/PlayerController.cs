@@ -8,6 +8,14 @@ using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
+    //Stores a reference to the point to spawn projectiles from
+    [SerializeField]
+    Transform projectileSpawn;
+
+    //Stores a reference to the item visual
+    [SerializeField]
+    Transform itemTransform;
+
     //Stores a reference to the camera attached to the player
     [SerializeField]
     Transform cameraTransform;
@@ -118,6 +126,13 @@ public class PlayerController : MonoBehaviour
         cameraEuler.x = Mathf.Clamp(cameraEuler.x, -60, 45);
         //Apply the local rotation to the camera. Restrict Y and Z rotation to 0
         cameraTransform.localRotation = Quaternion.Euler(cameraEuler.x, 0, 0);
+
+        //Update the item visual to rotate vertically with the camera
+        Vector3 itemEuler = itemTransform.localRotation.eulerAngles;
+        //This is hardcoded because the visual cylinder is 90 degrees rotated
+        itemEuler.x = cameraEuler.x + 90;
+        //Apply the local transform to the item. Restrict Y and Z rotation to 0
+        itemTransform.localRotation = Quaternion.Euler(itemEuler.x, 0, 0);
     }
 
     /// <summary>
@@ -148,13 +163,19 @@ public class PlayerController : MonoBehaviour
         if(!inputs.usePrimary)
             return;
 
+        //Activate the primary usage of the current item
         currentItem.UsePrimary();
     }
 
     void UpdateUI(){
+        //Attempt to cast the current item as a type of Gun
         Gun currentGun = currentItem as Gun;
+        
+        //If the cast is successful get the current and max ammo values; otherwise default them to 0
         int currentAmmo = currentGun != null ? currentGun.GetCurrentAmmo() : 0;
         int maxAmmo = currentGun != null ? currentGun.GetMaxAmmo() : 0;
+
+        //Set the UI visual based on if the current item is a gun, its stats and the player ammo reserves
         ammoUI.text = $"Ammo: {currentAmmo}/{maxAmmo} ({ammoReserves})";
     }
 
@@ -162,16 +183,24 @@ public class PlayerController : MonoBehaviour
     /// Sets the player's current item
     /// </summary>
     /// <param name="item">The item to give to the player</param>
-    public void SetCurrentItem(IItem item){
-        currentItem = item;
+    public void SetCurrentItem(IItem a_item){
+        currentItem = a_item;
+
+        //Determine if the item is a type of gun
+        Gun gunItem = currentItem as Gun;
+        if(gunItem == null)
+            return;
+
+        //Set the firing point of the gun
+        gunItem.SetFireOrigin(projectileSpawn);
     }
 
     /// <summary>
     /// Adds ammo to the player's reserves
     /// </summary>
     /// <param name="ammo">The amount of ammo to add</param>
-    public void AddAmmoReserve(int ammo){
-        ammoReserves += ammo;
+    public void AddAmmoReserve(int a_ammo){
+        ammoReserves += a_ammo;
     }
 
     private void OnTriggerEnter(Collider collider){

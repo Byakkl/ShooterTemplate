@@ -44,3 +44,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f96e1c4f6907d664eb94032ae9c9b179, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameController: {fileID: 11400000, guid: 4a15fe6b34d6f084984fe22de85a6d27, type: 2}
+  prefab: {fileID: 0}
+  startSpawned: 0
+  shouldRespawn: 0
+  respawnTime: 0
+  projectilePrefab: {fileID: 3283552796174705826, guid: e875ab5ee92bf0b47ab23cd4385d3c3b, type: 3}

@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class PlayerSpawner : Spawner
 {
+    [SerializeField]
+    GameObject projectilePrefab;
+
     // Update is called once per frame
     public override void Spawn()
     {
@@ -14,7 +17,7 @@ public class PlayerSpawner : Spawner
         PlayerController controller = instance.GetComponent<PlayerController>();
 
         //Give the player their starting item
-        Gun gun = new Gun(6, 6, 0.2f);
+        Gun gun = new Gun(6, 6, 0.2f, projectilePrefab);
         gameController.AddItem(gun);
 
         controller.SetCurrentItem(gun);

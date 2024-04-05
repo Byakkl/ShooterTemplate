@@ -354,10 +354,6 @@ PrefabInstance:
       propertyPath: shouldRespawn
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 4442902990066228058, guid: d5fea9fef7d36e34bb6f071b86b9c7b0, type: 3}
-      propertyPath: gameController
-      value: 
-      objectReference: {fileID: 11400000, guid: 4a15fe6b34d6f084984fe22de85a6d27, type: 2}
     - target: {fileID: 7545676899007473346, guid: d5fea9fef7d36e34bb6f071b86b9c7b0, type: 3}
       propertyPath: m_Name
       value: ItemSpawner
