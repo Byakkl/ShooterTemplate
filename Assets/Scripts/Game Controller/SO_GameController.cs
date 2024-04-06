@@ -4,21 +4,23 @@ using UnityEngine;
 public class SO_GameController : ScriptableObject
 {
     //Instance of the GameController
-    public GameController instance;
+    private GameController instance;
+
+    /// <summary>
+    /// Sets the instance of the GameController
+    /// </summary>
+    /// <param name="a_instance"></param>
+    public void SetGameControllerInstance(GameController a_instance) => instance = a_instance;
 
     /// <summary>
     /// Shortcut method
     /// </summary>
     /// <param name="a_item">Item to be added</param>
-    public void AddItem(IItem a_item){
-        instance.AddItem(a_item);
-    }
+    public void AddItem(IItem a_item) => instance.AddItem(a_item);
 
     /// <summary>
     /// Shortcut method
     /// </summary>
     /// <param name="a_item">Item to be removed</param>
-    public void RemoveItem(IItem a_item){
-        instance.RemoveItem(a_item);
-    }
+    public void RemoveItem(IItem a_item) => instance.RemoveItem(a_item);
 }

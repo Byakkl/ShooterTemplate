@@ -13,7 +13,7 @@ public class GameController : MonoBehaviour
     void Awake()
     {
         //Set the scriptable object instance to this one
-        gameController.instance = this;
+        gameController.SetGameControllerInstance(this);
         //Lock the cursor to the center of the screen and hide it
         Cursor.lockState = CursorLockMode.Locked;
     }
