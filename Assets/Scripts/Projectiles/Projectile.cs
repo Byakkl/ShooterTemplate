@@ -26,7 +26,7 @@ public class Projectile : MonoBehaviour
 
     public void OnTriggerEnter(Collider a_collider){
         //Attempt to get an IShootable component from the hit object
-        IShootable shootable = a_collider.gameObject.GetComponent<IShootable>();
+        IDamageable shootable = a_collider.gameObject.GetComponent<IDamageable>();
 
         //If it has an IShootable component then invoke its hit response
         if(shootable != null)

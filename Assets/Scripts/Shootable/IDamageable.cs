@@ -1,4 +1,4 @@
-public interface IShootable
+public interface IDamageable
 {
     public void OnHit();
 }

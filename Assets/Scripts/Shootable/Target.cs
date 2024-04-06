@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [RequireComponent(typeof(MeshRenderer))]
-public class Target : MonoBehaviour, IShootable
+public class Target : MonoBehaviour, IDamageable
 {
     //The mesh renderer that is updated when hit
     MeshRenderer meshRenderer;
