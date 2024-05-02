@@ -23,7 +23,8 @@ public class PlayerSpawner : Spawner
         //Set the player's current item to the created gun
         controller.SetCurrentItem(gun);
 
+        Ammo startingAmmo = new Ammo(2);
         //Give the player their starting ammo reserve
-        controller.AddAmmoReserve(10);
+        controller.AddAmmoReserve(ref startingAmmo);
     }
 }

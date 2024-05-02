@@ -7,6 +7,8 @@ public interface IItem
 
     public void UseSecondary();
 
+    public void Reload();
+
     public void ItemUpdate();
 
     public void Cleanup();

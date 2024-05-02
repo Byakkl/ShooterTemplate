@@ -34,16 +34,14 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     TMP_Text ammoUI;
 
-    //Reference to the current item the player is holding
-    IItem currentItem;
+    Inventory<IItem> itemInv = new Inventory<IItem>();
 
-    //Stores the ammount of reserve ammo the player has
-    int ammoReserves;
+    Inventory<Ammo> ammoInv = new Inventory<Ammo>();
 
     PlayerController(){
         //Set initial values
-        currentItem = null;
-        ammoReserves = 0;
+        itemInv.EmptyInventory(true);
+        ammoInv.EmptyInventory(true);
     }
 
     void Start(){
@@ -149,14 +147,7 @@ public class PlayerController : MonoBehaviour
         if(!inputs.reload)
             return;
 
-        //Attempt to cast the current item as a gun
-        Gun currentGun = currentItem as Gun;
-            
-        //If it isn't a gun then exit
-        if(currentGun == null)
-            return;
-
-        ammoReserves += currentGun.Reload(ammoReserves);
+        itemInv.currentItem.Reload();
 
         //Override any firing input
         inputs.usePrimary = false;
@@ -170,19 +161,19 @@ public class PlayerController : MonoBehaviour
             return;
 
         //Activate the primary usage of the current item
-        currentItem.UsePrimary();
+        itemInv.currentItem.UsePrimary();
     }
 
     void UpdateUI(){
         //Attempt to cast the current item as a type of Gun
-        Gun currentGun = currentItem as Gun;
+        Gun currentGun = itemInv.currentItem as Gun;
         
         //If the cast is successful get the current and max ammo values; otherwise default them to 0
         int currentAmmo = currentGun != null ? currentGun.GetCurrentAmmo() : 0;
         int maxAmmo = currentGun != null ? currentGun.GetMaxAmmo() : 0;
 
         //Set the UI visual based on if the current item is a gun, its stats and the player ammo reserves
-        ammoUI.text = $"Ammo: {currentAmmo}/{maxAmmo} ({ammoReserves})";
+        ammoUI.text = $"Ammo: {currentAmmo}/{maxAmmo} ({ammoInv.currentItem?.quantity})";
     }
 
     /// <summary>
@@ -190,10 +181,10 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     /// <param name="item">The item to give to the player</param>
     public void SetCurrentItem(IItem a_item){
-        currentItem = a_item;
+        itemInv.currentItem = a_item;
 
         //Determine if the item is a type of gun
-        Gun gunItem = currentItem as Gun;
+        Gun gunItem = itemInv.currentItem as Gun;
         if(gunItem == null)
             return;
 
@@ -205,8 +196,11 @@ public class PlayerController : MonoBehaviour
     /// Adds ammo to the player's reserves
     /// </summary>
     /// <param name="ammo">The amount of ammo to add</param>
-    public void AddAmmoReserve(int a_ammo){
-        ammoReserves += a_ammo;
+    public void AddAmmoReserve(ref Ammo a_type){
+        ammoInv.AddItem(ref a_type);
+
+        if(ammoInv.currentItem == null || ammoInv.currentItem == default)
+            ammoInv.ChangeItem(0);
     }
 
     private void OnTriggerEnter(Collider a_collider){

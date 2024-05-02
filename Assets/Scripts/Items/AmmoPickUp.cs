@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class AmmoPickUp : MonoBehaviour, IItem, IPickUp
+public class AmmoPickUp : MonoBehaviour, IPickUp
 {
     #region Animation Variables
     //Reference to visual group's transform
@@ -26,6 +26,9 @@ public class AmmoPickUp : MonoBehaviour, IItem, IPickUp
     [SerializeField]
     int ammoMaximum = 5;
 
+    [SerializeField]
+    AmmoType ammoType;
+
     //How much ammo the pickup contains
     int ammoValue;
 
@@ -37,6 +40,10 @@ public class AmmoPickUp : MonoBehaviour, IItem, IPickUp
 
         //Determine a random amount of ammo this pickup is worth
         ammoValue = Random.Range(ammoMinimum, ammoMaximum);
+    }
+
+    void Update(){
+        PlayAnimation();
     }
 
     /// <summary>
@@ -73,38 +80,10 @@ public class AmmoPickUp : MonoBehaviour, IItem, IPickUp
 
     public void PickUp(PlayerController a_player)
     {
+        Ammo ammo = new Ammo(ammoValue);
         //Add the ammo value to the player's reserves
-        a_player.AddAmmoReserve(ammoValue);
+        a_player.AddAmmoReserve(ref ammo);
 
-        isItemActive = false;
-    }
-
-    #region Item Implementation
-    private bool _isItemActive;
-    public bool isItemActive {get => _isItemActive; set => _isItemActive = value;}
-
-    public void UsePrimary()
-    {
-        //No primary use
-        return;
-    }
-
-    public void UseSecondary()
-    {
-        //No secondary use
-        return;
-    }
-
-    public void ItemUpdate()
-    {
-        //Play the visual movement for the pickup
-        PlayAnimation();
-    }
-
-    public void Cleanup(){
-        //Once this item is inactive we want to destroy it
-        //If we were using item pools we'd just return it to the inactive pool instead
         Destroy(gameObject);
     }
-    #endregion
 }

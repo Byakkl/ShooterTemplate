@@ -198,5 +198,10 @@ public class Gun : IItem
         projectilePool.Clear();
         return;
     }
+
+    public void Reload()
+    {
+        throw new System.NotImplementedException();
+    }
     #endregion
 }
